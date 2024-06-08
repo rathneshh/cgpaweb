@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container shadow-depth">
+        <h1>GPA Calculator</h1>
+        <div id="courses">
+            <!-- Course input fields -->
+        </div>
+        <button id="addCourse">+ Add Course</button>
+        <button id="deleteCourse">- Delete Selected Courses</button>
+        <button id="calculateGPA">Calculate GPA</button>
+        <button id="exportToExcel">Export to Excel</button>
+        <button id="exportToPNG">Export to PNG</button>
+        <input type="text" id="studentName" placeholder="Enter your name">
+        <p id="result"></p>
+        <button onclick="location.href='/'">Back</button>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
