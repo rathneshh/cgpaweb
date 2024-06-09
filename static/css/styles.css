@@ -1,7 +1,9 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+    position: relative;
     background-image: url('/static/images/background.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
@@ -10,9 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    
 }
+
 body::before {
     content: '';
     position: absolute;
@@ -30,18 +31,66 @@ body::before {
 
 .container {
     background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 16px;
+    padding: 70px;
     max-width: 600px;
     width: 100%;
     text-align: center;
+    margin: 50px auto 20px; /* Adjust margin to create space below the banner */
+
     /* Add any specific styles for the container */
 }
+.container_left {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 70px;
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+    margin: 50px auto 20px; /* Adjust margin to create space below the banner */
+
+    /* Add any specific styles for the container */
+}
+
 .course, .semester {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
 }
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scrollable-container {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px; /* Adjust padding to your preference */
+    max-width: 600px;
+    width: calc(100% - 70px); /* Subtract 40px from the width to create a gap from both left and right sides */
+    text-align: center;
+    margin: 0 auto 20px auto; /* Center the container horizontally and add a 20px gap from the bottom */
+    overflow-y: auto; /* Add vertical scrollbar if content overflows */
+    max-height: 400px; /* Set max height for scrollable container */
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+.scrollable-content {
+    /* Add specific styles for the scrollable content inside the container */
+    
+    line-height: 1.5; /* Adjust line height for better readability */
+}
+
+.above-image {
+    width: calc(100% - 68px); /* Adjust width to match the scrollable container */
+    margin-top: 20px;
+    margin-bottom: 20px; /* Adjust space between the image and the scrollable container */
+    border-radius: 16px; /* Add rounded corners to the image */
+    overflow: hidden; /* Hide overflow content if the image size exceeds its container */
+}
+
+
 
 .course input, .semester input {
     margin: 0 10px;
@@ -65,6 +114,149 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box-shadow on hover */
 }
 
+input[type="text"] {
+    margin: 10px;
+    padding: 10px;
+}
+
 input[type="checkbox"] {
     margin-right: 10px;
 }
+.banner {
+    position: absolute;
+    top: 50px; /* Adjust the distance from the top as needed */
+    left: 50px; /* Adjust the distance from the left as needed */
+    right: 550px; /* Adjust the distance from the right as needed */
+    height: 200px; /* Adjust the height as needed */
+    background-image: url('/static/images/banner.jpg');
+    background-size: contain; /* Ensure the image fits within the container */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+    overflow: hidden;
+    transition: opacity 1s ease;
+}
+
+.banner.dissolve {
+    opacity: 0; /* Set opacity to 0 for dissolve effect */
+    pointer-events: none; /* Disable pointer events when dissolved */
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image fits within the container */
+}
+
+
+.logo {
+    position: fixed;
+    bottom: 27px;
+    right: 27px;
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+}
+
+
+:root {
+    --signature-content: 'Designed by casty 🙂‍↕️🖐️🧎‍♀️‍➡️';
+}
+
+.signature {
+    position: fixed;
+    bottom: 30px;
+    left: 31px;
+    text-align: left;
+    font-size: 14px;
+    color: #aeff00;
+    /* Use the same color as the parent element */
+    text-decoration: none; /* Remove underline */
+}
+.image-container {
+    margin-top: 20px; /* Add margin to create a gap above the scrollable content */
+    text-align: center; /* Center the image horizontally */
+}
+
+
+.image-container img {
+    display: block; /* Make the image behave like a block element */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.signature::after {
+    content: var(--signature-content);
+    display: block;
+}
+
+.heading-container {
+    background-color: #fff;
+    border-radius: 19px;
+    padding: 12px; /* Adjust padding to your preference */
+    max-width: 265px;
+    width: calc(100% - 70px); /* Subtract 40px from the width to create a gap from both left and right sides */
+    text-align: center;
+    margin: 0 auto 20px auto;/* Center the container horizontally and add a 20px gap from the bottom */
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+
+.heading-container h1 {
+    
+    margin: 0; /* Remove default margin */
+}
+#reaction {
+    margin-top: 20px;
+}
+
+/* Styling for translucent overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    z-index: 1000; /* Ensure it's on top of other content */
+    display: none; /* Initially hidden */
+}
+
+/* Styling for reaction container */
+.reaction-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001; /* Ensure it's on top of the overlay */
+    display: none; /* Initially hidden */
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+/* Styling for reaction text */
+.reaction-text {
+    font-size: 24px;
+    color: white; /* Adjust color as needed */
+    margin-bottom: 10px; /* Adjust spacing as needed */
+}
+
+/* Styling for reaction image */
+.reaction-img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* Ensure the image is displayed as a block element */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Shrinking animation */
+@keyframes shrinkAndMove {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    100% { transform: translate(-50%, 90%) scale(0.1); }
+}
+

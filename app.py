@@ -20,6 +20,10 @@ def gpa():
 def cgpa():
     return render_template('cgpa.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/gpa', methods=['POST'])
 def calculate_gpa():
     data = request.json

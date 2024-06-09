@@ -7,15 +7,29 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
-    <h1>CGPA Calculator</h1>
-    <div id="semesters"></div>
-    <button id="addSemester">+ Add Semester</button>
-    <button id="deleteSemester">- Delete Selected Semesters</button>
-    <button id="calculateCGPA">Calculate CGPA</button>
-    <button id="exportCGPAToExcel">Export to Excel</button>
-    <input type="text" id="studentName" placeholder="Enter your name">
-    <p id="result"></p>
-    <button onclick="location.href='/'">Back</button>
-    <script src="/static/js/script.js"></script>
+    <div class="container shadow-depth">
+        <h1>CGPA Calculator</h1>
+        <div id="semesters">
+            <!-- Semester input fields -->
+        </div>
+        <button id="addSemester">+ Add Semester</button>
+        <button id="deleteSemester">- Delete Selected Semesters</button>
+        <button id="calculateCGPA">Calculate CGPA</button>
+        <input type="text" id="studentName" placeholder="Enter your name">
+        <button id="exportCGPAToExcel">Export to Excel</button>
+        <button id="exportToPNG">Export to PNG</button>
+        <p id="result"></p>
+        <button onclick="location.href='/'">Back</button>
+    </div>
+    <div class="logo">
+        <img src="/static/images/logo.png" alt="Logo">
+    </div>
+    <div class="signature"></div>
+    <script src="/static/js/cgpa.js"></script>
+    <div class="overlay"></div>
+    <div class="reaction-container">
+        <p class="reaction-text"></p>
+        <img class="reaction-img" alt="Reaction Image">
+    </div>
 </body>
 </html>

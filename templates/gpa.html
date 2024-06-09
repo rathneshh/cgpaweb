@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
+    
     <div class="container shadow-depth">
         <h1>GPA Calculator</h1>
         <div id="courses">
@@ -19,8 +20,21 @@
         <button id="exportToPNG">Export to PNG</button>
         <input type="text" id="studentName" placeholder="Enter your name">
         <p id="result"></p>
+        <div id="reaction"></div>
         <button onclick="location.href='/'">Back</button>
     </div>
-    <script src="/static/js/script.js"></script>
+    <div class="logo">
+        <img src="/static/images/logo.png" alt="Logo">
+    </div>
+    <div class="signature"></div>
+    <script src="/static/js/gpa.js"></script>
+    
+    <div class="overlay"></div>
+    <div class="reaction-container">
+        <p class="reaction-text"></p>
+        <img class="reaction-img" alt="Reaction Image">
+    </div>
+
+
 </body>
 </html>

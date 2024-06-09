@@ -11,6 +11,27 @@
         <h1>Do you want to calculate GPA or CGPA?</h1>
         <button onclick="window.location.href='/gpa'">GPA</button>
         <button onclick="window.location.href='/cgpa'">CGPA</button>
+        
     </div>
+    <div class="banner" id="banner">
+        <img src="/static/images/banner.jpg" alt="Banner Image">
+    </div>
+    <div class="logo">
+        <a href="/about">
+            <img src="/static/images/logo.png" alt="Logo">
+        </a>
+    </div>
+    <div class="signature"></div>
+
+    <script src="/static/js/dissolve.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const banner = document.getElementById('banner');
+            // Check if not on the index page
+            if (window.location.pathname !== '/index.html' && window.location.pathname !== '/') {
+                banner.classList.add('dissolve');
+            }
+        });
+    </script>
 </body>
 </html>
