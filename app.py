@@ -91,4 +91,4 @@ def calculate_cgpa():
     return jsonify({'cgpa': cgpa})
 
 if __name__ == '__main__':
-    app.run(port=1337, debug=True)
+    app.run(debug=True)
