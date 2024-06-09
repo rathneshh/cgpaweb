@@ -148,15 +148,12 @@ function determineReactionDetails(gpa) {
     }
 }
 
-
-
-
 document.getElementById('exportToExcel').addEventListener('click', () => {
     const courses = document.querySelectorAll('#courses .course');
     const courseData = Array.from(courses).map(course => ({
-        name: course.children[1].value,
+        course_name: course.children[1].value,
         credits: course.children[2].value,
-        grade: course.children[3].value
+        grade_points: course.children[3].value
     }));
     const name = document.getElementById('studentName').value || "Student";
     fetch('/gpa', {
@@ -179,12 +176,13 @@ document.getElementById('exportToExcel').addEventListener('click', () => {
     });
 });
 
+
 document.getElementById('exportToPNG').addEventListener('click', () => {
     const courses = document.querySelectorAll('#courses .course');
     const courseData = Array.from(courses).map(course => ({
-        name: course.children[1].value,
+        course_name: course.children[1].value,  // Use course_name to match backend
         credits: course.children[2].value,
-        grade: course.children[3].value
+        grade_points: course.children[3].value  // Use grade_points to match backend
     }));
     const name = document.getElementById('studentName').value || "Student";
     fetch('/gpa', {
@@ -206,4 +204,3 @@ document.getElementById('exportToPNG').addEventListener('click', () => {
         window.URL.revokeObjectURL(url);
     });
 });
-
