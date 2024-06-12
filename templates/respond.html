@@ -89,19 +89,23 @@
         margin-right: 10px;
         cursor: pointer;
     }
+
+    .button-delete {
+        background-color: #dc3545;
+    }
+
 </style>
 <body>
     <div class="respond-container">
         <h1>Respond to Messages</h1>
 
         {% for message in messages %}
-        <div class="message">
+        <div class="message-box">
             <p>{{ message.content }}</p>
             <ul class="replies">
                 {% for reply in message.replies %}
-                <li id="reply-{{ reply.id }}">
+                <li class="reply" id="reply-{{ reply.id }}">
                     <span class="reply-content">{{ reply.content }}</span>
-                    
                     {% if reply.image_path %}
                     <div class="reply-image"><img src="{{ url_for('static', filename='uploads/' ~ reply.image_path.split('/')[-1]) }}" alt="Reply Image"></div>
                     {% endif %}
@@ -120,6 +124,9 @@
                 <textarea name="reply_content" placeholder="Enter your reply..." required></textarea>
                 <input type="file" name="image">
                 <button type="submit">Reply</button>
+            </form>
+            <form action="{{ url_for('delete_message', message_id=message.id) }}" method="POST">
+                <button class="button-delete" type="submit">Delete Message</button>
             </form>
         </div>
         {% endfor %}

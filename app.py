@@ -250,16 +250,6 @@ def show_messages():
     return render_template('messages.html', messages=messages)
 
 
-@app.route('/create_user')
-def create_user():
-    username = 'test'
-    password = 'test'
-    user = User(username=username)
-    user.set_password(password)
-    db.session.add(user)
-    db.session.commit()
-    return 'User created!'
-
 
 # Load user callback for Flask-Login
 @login_manager.user_loader
@@ -308,6 +298,21 @@ def respond_to_messages():
 
     messages = Message.query.all()
     return render_template('respond.html', messages=messages, enumerate=enumerate)
+
+@app.route('/delete_message/<int:message_id>', methods=['POST'])
+@login_required
+def delete_message(message_id):
+    message = Message.query.get(message_id)
+    if message:
+        # Delete all replies associated with the message
+        Reply.query.filter_by(message_id=message.id).delete()
+        # Delete the message itself
+        db.session.delete(message)
+        db.session.commit()
+        print(f'Message with ID {message_id} and its replies deleted successfully!')
+    else:
+        print(f'Message with ID {message_id} does not exist.')
+    return redirect(url_for('respond_to_messages'))
 
 @app.route('/delete_reply/<int:reply_id>', methods=['POST'])
 @login_required
