@@ -7,14 +7,30 @@
     <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
+    <div class="containerLOL">
+        <div class="container_left">
+            <h1>About Me UWU</h1>
+            <p>Name: Jahseh</p>
+            <p>Occupation: Putting white on your moms teeth</p>
+            <p>Instagram : karate_mass_13</p>
+            <p>Location: YOU CANNOT HOP IN MY CAR 🗣️‼️‼️‼️🗣️‼️‼️‼️</p>
+            <button onclick="location.href='/'">Back</button>
+        </div>
 
-    <div class="container_left">
-        <h1>About Me UWU</h1>
-        <p>Name: Jahseh</p>
-        <p>Occupation: Putting white on your moms teeth</p>
-        <p>Instagram : karate_mass_13</p>
-        <p>Location: YOU CANNOT HOP IN MY CAR 🗣️‼️‼️‼️🗣️‼️‼️‼️</p>
-        <button onclick="location.href='/'">Back</button>
+        <div class="message-box">
+            <h2>Leave a Message</h2>
+            <!-- Corrected form action and method -->
+            <form action="/about" method="POST" enctype="multipart/form-data">
+                <label for="nickname">Nickname:</label><br>
+                <input type="text" id="nickname" name="nickname" required><br><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+                <label for="image">Image (Optional):</label><br>
+                <input type="file" id="image" name="image"><br><br>
+                <input type="submit" value="Leave a Message">
+            </form>
+        </div>
+        <button onclick="location.href='/messages'">Go to Messages</button>
     </div>
     
     <div class="content-wrapper">
@@ -25,8 +41,7 @@
         <div class="scrollable-container">
             <div class="scrollable-content">
     
-            
-        <!-- Additional text -->
+            <!-- Additional text -->
             <p>10 minutes ago is Edge.</p>
             <p>Edge.</p>
             <p>Have you ever been on an Edging streak? Edge.</p>

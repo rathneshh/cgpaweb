@@ -24,9 +24,9 @@ document.getElementById('deleteCourse').addEventListener('click', () => {
 document.getElementById('calculateGPA').addEventListener('click', () => {
     const courses = document.querySelectorAll('#courses .course');
     const courseData = Array.from(courses).map(course => ({
-        name: course.children[1].value,
+        course_name: course.children[1].value,
         credits: course.children[2].value,
-        grade: course.children[3].value
+        grade_points: course.children[3].value
     }));
     const name = document.getElementById('studentName').value || "Student";
     fetch('/gpa', {

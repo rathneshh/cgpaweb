@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="/static/css/msg.css">
+    <script src="{{ url_for('static', filename='js/respond.js') }}"></script> <!-- Link to your JavaScript file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+            padding-top: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .message-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .message-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .message-box h3 {
+            margin-top: 0;
+        }
+
+        .message-box p {
+            margin-bottom: 0;
+        }
+
+        .replies {
+            margin-top: 10px;
+            padding-left: 20px;
+            border-left: 2px solid #ccc;
+        }
+
+        .reply {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+
+        .reply-content {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .reply-image img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .icons {
+            margin-top: 10px;
+        }
+
+        .icons i {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Messages</h1>
+    <div class="message-container">
+        {% for message in messages %}
+        <div class="message-box">
+            <h3>From: {{ message.sender }}</h3>
+            <p>Message: {{ message.content }}</p>
+            <div class="replies">
+                <h4>Replies:</h4>
+                {% for reply in message.replies %}
+                <div class="reply">
+                    <span class="reply-content">From: Castyy 🙂‍↕️🖐️</span>
+                    <p>{{ reply.content }}</p>
+                    {% if reply.image_path %}
+                    <div class="reply-image"><img src="{{ url_for('static', filename='uploads/' ~ reply.image_path.split('/')[-1]) }}" alt="Reply Image"></div>
+                    {% endif %}
+                    <div class="icons">
+                        <i class="fas fa-trash" onclick="confirmDelete('{{ reply.id }}')"></i>
+                        <i class="fas fa-edit" onclick="editReply('{{ reply.id }}')"></i>
+                    </div>
+                    <form id="delete-form-{{ reply.id }}" action="{{ url_for('delete_reply', reply_id=reply.id) }}" method="POST" style="display: none;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/about">Go Back</a>
+</body>
+</html>

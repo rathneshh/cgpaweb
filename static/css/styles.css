@@ -40,27 +40,57 @@ body::before {
 
     /* Add any specific styles for the container */
 }
+.containerLOL {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 6px/* Add margin to create space between .containerLOL and .content-wrapper */
+}
+
 .container_left {
+    
     background-color: #fff;
     border-radius: 16px;
-    padding: 70px;
+    padding: 49px;
     max-width: 600px;
     width: 100%;
     text-align: left;
-    margin: 50px auto 20px; /* Adjust margin to create space below the banner */
-
-    /* Add any specific styles for the container */
+    margin-bottom: 20px; /* Add margin to create space below .container_left */
 }
+
+.message-box {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 660px;
+    text-align: left; 
+    margin-left: auto; /* Automatically align to the left */
+    margin-right: auto; /* Automatically align to the right */
+}
+
+.content-wrapper {
+    margin-right: calc(100%-70);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    margin-left: 279px;/* Add padding-top to create space above .content-wrapper */
+}
+
+/* Add any additional styles as needed */
+
+
+.parent-container {
+    width: 100%;
+    overflow: hidden; /* Clear floats */
+}
+
 
 .course, .semester {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-}
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .scrollable-container {
