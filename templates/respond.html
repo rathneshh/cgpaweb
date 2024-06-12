@@ -101,6 +101,9 @@
 
         {% for message in messages %}
         <div class="message-box">
+            {% if message.image_path %}
+            <div class="message-image"><img src="{{ url_for('static', filename='uploads/' ~ message.image_path.split('/')[-1]) }}" alt="Message Image"></div>
+            {% endif %}
             <p>{{ message.content }}</p>
             <ul class="replies">
                 {% for reply in message.replies %}

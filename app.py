@@ -233,7 +233,9 @@ def about():
         image_path = None
         if image:
             image_path = f'static/uploads/{image.filename}'
-            image.save(image_path)
+            with Image.open(image) as img:
+                resized_img = img.resize((128, 128))
+                resized_img.save(image_path)
 
         new_message = Message(sender=sender, content=content, image_path=image_path)
         db.session.add(new_message)

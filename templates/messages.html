@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Messages</title>
     <link rel="stylesheet" href="/static/css/msg.css">
-    <script src="{{ url_for('static', filename='js/respond.js') }}"></script> <!-- Link to your JavaScript file -->
+    <script src="{{ url_for('static', filename='js/respond.js') }}"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -40,6 +40,12 @@
 
         .message-box p {
             margin-bottom: 0;
+        }
+
+        .message-image img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
         }
 
         .replies {
@@ -95,12 +101,15 @@
         {% for message in messages %}
         <div class="message-box">
             <h3>From: {{ message.sender }}</h3>
+            {% if message.image_path %}
+            <div class="message-image"><img src="{{ url_for('static', filename='uploads/' ~ message.image_path.split('/')[-1]) }}" alt="Message Image"></div>
+            {% endif %}
             <p>Message: {{ message.content }}</p>
             <div class="replies">
                 <h4>Replies:</h4>
                 {% for reply in message.replies %}
                 <div class="reply">
-                    <span class="reply-content">From: Castyy 🙂‍↕️🖐️</span>
+                    <span class="reply-content">Reply:</span>
                     <p>{{ reply.content }}</p>
                     {% if reply.image_path %}
                     <div class="reply-image"><img src="{{ url_for('static', filename='uploads/' ~ reply.image_path.split('/')[-1]) }}" alt="Reply Image"></div>
