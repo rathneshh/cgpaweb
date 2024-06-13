@@ -306,12 +306,17 @@ def respond_to_messages():
 def delete_message(message_id):
     message = Message.query.get(message_id)
     if message:
+        # Delete associated image if it exists
+        if message.image_path:
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], message.image_path)
+            if os.path.exists(image_path):
+                os.remove(image_path)
         # Delete all replies associated with the message
         Reply.query.filter_by(message_id=message.id).delete()
         # Delete the message itself
         db.session.delete(message)
         db.session.commit()
-        print(f'Message with ID {message_id} and its replies deleted successfully!')
+        print(f'Message with ID {message_id} and its associated image and replies deleted successfully!')
     else:
         print(f'Message with ID {message_id} does not exist.')
     return redirect(url_for('respond_to_messages'))

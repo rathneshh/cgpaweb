@@ -9653,3 +9653,4 @@ __pycache__/app.cpython-312.pyc
 .venv/lib/python3.12/site-packages/xlsxwriter/__pycache__/workbook.cpython-312.pyc
 .venv/lib/python3.12/site-packages/xlsxwriter/__pycache__/worksheet.cpython-312.pyc
 .venv/lib/python3.12/site-packages/xlsxwriter/__pycache__/xmlwriter.cpython-312.pyc
+req.txt
